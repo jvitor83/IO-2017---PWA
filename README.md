@@ -24,6 +24,7 @@
 
 ### `index.html`
 ```
+<!doctype html>
 <html>
 
 <head>

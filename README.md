@@ -71,7 +71,7 @@ self.addEventListener('install', function(evt) {
 });
 
 self.addEventListener('fetch', function(evt) {
-  console.log('Fetch event called.');
+  console.log('HELLO WORLD from FETCH event in Service-Worker!');
 });
 ```
 
@@ -82,7 +82,7 @@ self.addEventListener('install', function(evt) {
 });
 
 self.addEventListener('fetch', function(evt) {
-    evt.respondWith(new Response("HELLO WORLD from Service-Worker!"));
+    evt.respondWith(new Response("YOU SHALL NOT PASS!"));
 });
 ```
 

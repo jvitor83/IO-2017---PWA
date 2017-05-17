@@ -54,6 +54,8 @@
 
 ## Exemplo 3 (AppShell)
 
+https://getmdl.io/templates/index.html
+
 ### `index.html`
 ```
     <link rel="stylesheet" href="./vendors/mdl/material.min.css">

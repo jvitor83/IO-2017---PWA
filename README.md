@@ -197,3 +197,139 @@ module.exports = {
   ]
 }
 ```
+
+
+## Exemplo 6 (My App)
+
+### `index.html` (dentro do header no final)
+```
+<div class="toolbar">
+    <form onsubmit="searchArtist();return false">
+	<div class="mdl-grid">
+
+	    <div class="mdl-cell mdl-cell--3-col-phone mdl-cell--1-col-phone">
+		<!-- Textfield with Floating Label -->
+		<div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+		    <input class="mdl-textfield__input" autofocus type="text" id="artist">
+		    <label class="mdl-textfield__label" for="artist">Artist/Music</label>
+		</div>
+	    </div>
+	    <div class="mdl-cell mdl-cell--1-col-phone mdl-cell--1-col-phone">
+		<!-- Colored FAB button with ripple -->
+		<button class="mdl-button mdl-js-button mdl-button--fab mdl-js-ripple-effect mdl-button--colored">
+		    <i class="material-icons">search</i>
+		</button>
+	    </div>
+
+	</div>
+    </form>
+
+</div>
+```
+
+### `index.html` (dentro da div page-content)
+```
+<div id="searchArtistResult" class="mdl-grid">
+
+</div>
+
+<script id="artist-card" type="text/template">
+<div class="mdl-card mdl-cell mdl-shadow--6dp artist-card">
+    <div class="mdl-card__title artist-card-title">
+	<span class="mdl-card__title-text artist-card-title-content">{{name}}</span>
+    </div>
+    <div class="mdl-card__supporting-text artist-card-text">
+	<a href="{{url}}" target="blank"><span>{{track_name}}</span></a>
+    </div>
+    <div class="mdl-card__supporting-text artist-card-img-container">
+	<img src="{{image}}" class="artist-card-img" />
+    </div>
+</div>
+</script>
+```
+
+### `index.html` (dentro do body - no final)
+```
+    <script>
+        function searchArtist() {
+            var artistInputValue = document.getElementById('artist').value;
+            if (!artistInputValue) {
+                alert('Artist not informed!');
+                return;
+            }
+            var searchArtistResult = document.getElementById('searchArtistResult');
+            searchArtistResult.innerHTML = '';
+            var url = 'https://api.musixmatch.com/ws/1.1/track.search?apikey=a2092c783aa8162ca77beab498103c8c&page_size=100&page=1&format=jsonp&callback=callback&q=' + artistInputValue;
+            fetchJsonp(url).then(function (response) {
+                return response.json();
+            }).then(function (data) {
+                data.message.body.track_list.forEach(function (data) {
+                    var artistCard = generateArtistCard(data.track);
+                    searchArtistResult.insertAdjacentHTML('beforeend', artistCard);
+                });
+            });
+        }
+
+        function generateArtistCard(artist) {
+            var template = document.getElementById('artist-card').innerHTML;
+            template = template.replace('{{name}}', artist.artist_name);
+            template = template.replace('{{track_name}}', artist.track_name);
+            template = template.replace('{{url}}', artist.track_share_url);
+            template = template.replace('{{image}}', artist.album_coverart_100x100);
+            return template;
+        }
+    </script>
+```
+
+### `index.html` (dentro do head - no final)
+```
+<style>
+        .toolbar {
+            padding: 0px 16px 0px 16px;
+            background-color: white;
+            color: black;
+            height: 90px;
+        }
+
+        .artist-card {
+            background-color: white;
+            min-height: 130px;
+        }
+
+        .artist-card-title-content {
+            color: white;
+        }
+
+        .artist-card-title {
+            background-color: #3E4EB8;
+        }
+
+        .artist-card-text {
+            color: black;
+            font-size: 14pt;
+            z-index: 99;
+            width: 60%;
+        }
+
+        .artist-card-img {
+            float: right;
+        }
+
+        .artist-card-img-container {
+            position: absolute;
+        }
+    </style>
+```
+
+
+## Exemplo 7 (Service Worker - RUNTIME)
+
+### `sw-precache-config.js`
+```
+  "runtimeCaching": [{
+    "urlPattern": /^https:\/\/api.musixmatch.com\//,
+    "handler": "networkFirst"
+  }]
+```
+
+`sw-precache --config=sw-precache-config.js`

@@ -90,6 +90,10 @@ self.addEventListener('fetch', function(evt) {
 
 ### `service-worker.js` - Third
 ```
+var CACHE_FILES = [
+    './index.html',
+    './manifest.json'
+];
 var CACHE = 'cache-and-update';
 
 // On install, cache some resources.
@@ -117,10 +121,7 @@ self.addEventListener('fetch', function(evt) {
 // to the cache. Return a promise resolving when all the assets are added.
 function precache() {
   return caches.open(CACHE).then(function (cache) {
-    return cache.addAll([
-      './controlled.html',
-      './asset'
-    ]);
+    return cache.addAll(CACHE_FILES);
   });
 }
 

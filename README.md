@@ -116,7 +116,11 @@ self.addEventListener('fetch', function(evt) {
 ```
 var CACHE_FILES = [
     './index.html',
-    './manifest.json'
+    './manifest.json',
+    './vendors/mdl/material.min.js',
+    './vendors/mdl/material.min.css',
+    './vendors/mdl/material.icons.css',
+    './vendors/mdl/material.icons.woff2'
 ];
 var CACHE = 'cache-and-update';
 

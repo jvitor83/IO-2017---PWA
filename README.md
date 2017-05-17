@@ -82,7 +82,7 @@ self.addEventListener('install', function(evt) {
 });
 
 self.addEventListener('fetch', function(evt) {
-    evt.respondWith(new Response("OFFLINE!"));
+    evt.respondWith(new Response("HELLO WORLD from Service-Worker!"));
 });
 ```
 

@@ -54,6 +54,30 @@
 
 ## Exemplo 3 (AppShell)
 
+### `index.html`
+```
+    <link rel="stylesheet" href="./vendors/mdl/material.min.css">
+    <script src="./vendors/mdl/material.min.js"></script>
+    <link rel="stylesheet" href="./vendors/mdl/material.icons.css">
+```
+
+```
+<div class="mdl-layout mdl-js-layout mdl-layout--fixed-header">
+
+	<header class="mdl-layout__header">
+	    <div class="mdl-layout__header-row">
+		<span class="mdl-layout-title">Musis</span>
+	    </div>
+	</header>
+	<main class="mdl-layout__content">
+	    <div class="page-content">
+
+	    </div>
+	</main>
+
+</div>
+```
+
 ## Exemplo 4 (Service Worker - Sample)
 
 ### `index.html`

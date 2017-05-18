@@ -6,6 +6,7 @@
 
 
 chrome://flags/#enable-add-to-shelf
+
 chrome://flags/#bypass-app-banner-engagement-checks
 
 https://chrome.google.com/webstore/detail/lighthouse/blipmdconlkpinefehnmjammfjpmpbjk

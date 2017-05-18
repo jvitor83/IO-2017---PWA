@@ -328,20 +328,12 @@ module.exports = {
     "**/*.woff2",
     "**/*.js",
     "**/*.json"
-  ]
-}
-```
-
-
-
-## Exemplo 7 (Service Worker - RUNTIME)
-
-### `sw-precache-config.js`
-```
+  ],
   "runtimeCaching": [{
     "urlPattern": /^https:\/\/api.musixmatch.com\//,
     "handler": "networkFirst"
   }]
+}
 ```
 
 `sw-precache --config=sw-precache-config.js`

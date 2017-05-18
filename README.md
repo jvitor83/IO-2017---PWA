@@ -181,29 +181,9 @@ self.addEventListener('fetch', function (event) {
 
 ### MOSTRAR O CACHE NO DEV TOOLS
 
-## Exemplo 5 (Service Worker)
-
-`sw-precache`
-
-`sw-precache --config=sw-precache-config.js`
-
-```
-module.exports = {
-  "staticFileGlobs": [
-    "**/*.css",
-    "**/*.html",
-    "**/*.png",
-    "**/*.ico",
-    "**/*.svg",
-    "**/*.woff2",
-    "**/*.js",
-    "**/*.json"
-  ]
-}
-```
 
 
-## Exemplo 6 (My App)
+## Exemplo 5 (My App)
 
 ### COPIAR FETCH
 ### COPIAR FETCHJSONP
@@ -328,6 +308,30 @@ module.exports = {
         }
     </style>
 ```
+
+
+
+## Exemplo 6 (Service Worker)
+
+`sw-precache`
+
+`sw-precache --config=sw-precache-config.js`
+
+```
+module.exports = {
+  "staticFileGlobs": [
+    "**/*.css",
+    "**/*.html",
+    "**/*.png",
+    "**/*.ico",
+    "**/*.svg",
+    "**/*.woff2",
+    "**/*.js",
+    "**/*.json"
+  ]
+}
+```
+
 
 
 ## Exemplo 7 (Service Worker - RUNTIME)

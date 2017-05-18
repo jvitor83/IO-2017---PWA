@@ -179,6 +179,8 @@ self.addEventListener('fetch', function (event) {
 });
 ```
 
+### MOSTRAR O CACHE NO DEV TOOLS
+
 ## Exemplo 5 (Service Worker)
 
 `sw-precache`

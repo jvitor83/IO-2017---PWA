@@ -1,5 +1,21 @@
 # IO-2017-PWA
 
+## Testando 0
+
+### lighthouse
+
+
+chrome://flags/#enable-add-to-shelf
+chrome://flags/#bypass-app-banner-engagement-checks
+
+https://chrome.google.com/webstore/detail/lighthouse/blipmdconlkpinefehnmjammfjpmpbjk
+
+
+
+
+https://pwa.rocks/
+
+
 ## Exemplo 1
 ### `manifest.json`
 ```
@@ -36,12 +52,6 @@
 </head>
 
     <body>
-        <div>
-             <header>
-             </header>
-             <main>
-             </main>
-	</div>
     </body>
 
 </html>
@@ -51,18 +61,26 @@
 ### https://iconsflow.com/editor
 ### http://realfavicongenerator.net
 
+### COPIAR PWACOMPAT
+
+### `index.html` - (adicionar no final do head)
+```
+<script src="./vendors/pwacompat/pwacompat.min.js"></script>
+```
+
 
 ## Exemplo 3 (AppShell)
 
-### https://getmdl.io/templates/index.html
+### COPIAR MDL
 
-### `index.html`
+### `index.html` - (final da tag head)
 ```
     <link rel="stylesheet" href="./vendors/mdl/material.min.css">
     <script src="./vendors/mdl/material.min.js"></script>
     <link rel="stylesheet" href="./vendors/mdl/material.icons.css">
 ```
 
+### `index.html` - (adicionar dentro da body)
 ```
 <div class="mdl-layout mdl-js-layout mdl-layout--fixed-header">
 
@@ -79,6 +97,9 @@
 
 </div>
 ```
+
+### https://getmdl.io/templates/index.html
+
 
 ## Exemplo 4 (Service Worker - Sample)
 
@@ -200,6 +221,10 @@ module.exports = {
 
 
 ## Exemplo 6 (My App)
+
+### COPIAR FETCH
+### COPIAR FETCHJSONP
+### COPIAR ES6-PROMISE
 
 ### `index.html` (dentro do header no final)
 ```

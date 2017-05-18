@@ -72,6 +72,12 @@ https://pwa.rocks/
 
 ## Exemplo 3 (AppShell)
 
+```shell
+npm i -g live-server
+live-server
+```
+
+
 ### COPIAR MDL
 
 ### `index.html` - (final da tag head)

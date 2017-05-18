@@ -419,11 +419,7 @@ function inscreverUsuario() {
 	    applicationServerKey: applicationServerKey
 	})
 	.then(function (subscription) {
-	    console.log('User is subscribed:', subscription);
 	    gravarInscricaoNoServidor(subscription);
-	})
-	.catch(function (err) {
-	    console.log('Failed to subscribe the user: ', err);
 	});
 }
 function gravarInscricaoNoServidor(subscription) {
@@ -440,17 +436,17 @@ function desinscreverUsuario() {
 		return inscricao.unsubscribe();
 	    }
 	})
-	.catch(function (error) {
-	    console.log('Error unsubscribing', error);
-	})
 	.then(function (sub) {
-	    var usrSub = document.getElementById('inscricaoDoUsuario');
-	    if (sub) {
-		usrSub.innerHTML = JSON.stringify(sub);
-	    }else{
-		usrSub.innerHTML = '';
-	    }
+	    removerInscricaoNoServidor(sub);
 	});
+}
+function removerInscricaoNoServidor(sub) {
+    var usrSub = document.getElementById('inscricaoDoUsuario');
+    if (sub) {
+	usrSub.innerHTML = JSON.stringify(sub);
+    }else{
+	usrSub.innerHTML = '';
+    }
 }
 ```
 

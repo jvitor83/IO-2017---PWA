@@ -450,8 +450,6 @@ function removerInscricaoNoServidor(sub) {
 }
 ```
 
-#### MOSTRAR FUNCIONANDO
-
 #### `sw.js`
 ```
 self.addEventListener("push", function (event) {
@@ -478,3 +476,5 @@ self.addEventListener('notificationclick', function(event) {
   );
 });
 ```
+
+#### MOSTRAR FUNCIONANDO

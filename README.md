@@ -82,7 +82,7 @@
 
 ## Exemplo 4 (Service Worker - Sample)
 
-### `index.html`
+### `index.html` - (dentro do body - no final)
 ```
     <script>
         if ('serviceWorker' in navigator) {
@@ -333,3 +333,20 @@ module.exports = {
 ```
 
 `sw-precache --config=sw-precache-config.js`
+
+## Exemplo 8 (Finalizacao)
+
+### Git
+```shell
+git init
+git add .
+git commit -m "First commit"
+git remote add origin https://github.com/jvitor83/musis.git
+git push origin master
+```
+
+
+### https://github.com/jvitor83/musis/settings
+> Enable gh pages
+
+### https://jvitor83.github.io/musis/index.html

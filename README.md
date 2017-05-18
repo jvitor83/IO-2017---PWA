@@ -72,10 +72,8 @@ https://pwa.rocks/
 
 ## Exemplo 3 (AppShell)
 
-```shell
-npm i -g live-server
-live-server
-```
+### INICIA LIVE-SERVER
+`live-server`
 
 
 ### COPIAR MDL

@@ -354,3 +354,131 @@ git push origin master
 > Enable gh pages
 
 ### https://jvitor83.github.io/musis/index.html
+
+
+## Exemplo 9 (Push Notification)
+
+
+
+### `index.html`
+```
+<!DOCTYPE html>
+<html>
+<head></head>
+<body>
+    <button onclick="inscreverUsuario()">Inscrever Usuario</button>
+    <button onclick="desinscreverUsuario()">Desinscrever Usuario</button>
+    <div id="inscricaoDoUsuario"></div>
+    
+    
+    
+</body>
+</html>
+```
+
+### `index.html`
+
+```
+<script>
+        /* AppKey */
+        function urlB64ToUint8Array(base64String) {
+            const padding = '='.repeat((4 - base64String.length % 4) % 4);
+            const base64 = (base64String + padding)
+                .replace(/\-/g, '+')
+                .replace(/_/g, '/');
+            const rawData = window.atob(base64);
+            const outputArray = new Uint8Array(rawData.length);
+            for (let i = 0; i < rawData.length; ++i) {
+                outputArray[i] = rawData.charCodeAt(i);
+            }
+            return outputArray;
+        }
+        const applicationServerKey = urlB64ToUint8Array('-----------------------------------------');
+	
+        
+</script>
+```
+
+#### https://web-push-codelab.appspot.com
+
+#### COLOCA A CHAVE NO CODIGO
+
+```
+var swRegistration = null;
+if ('serviceWorker' in navigator && 'PushManager' in window) {
+    navigator.serviceWorker.register('sw.js').then(function (swReg) {
+	swRegistration = swReg;
+    });
+}
+```
+
+```
+function inscreverUsuario() {
+	swRegistration.pushManager.subscribe({
+	    userVisibleOnly: true,
+	    applicationServerKey: applicationServerKey
+	})
+	.then(function (subscription) {
+	    console.log('User is subscribed:', subscription);
+	    gravarInscricaoNoServidor(subscription);
+	})
+	.catch(function (err) {
+	    console.log('Failed to subscribe the user: ', err);
+	});
+}
+function gravarInscricaoNoServidor(subscription) {
+        var usrSub = document.getElementById('inscricaoDoUsuario');
+        usrSub.innerHTML = JSON.stringify(subscription);
+}
+```
+
+```
+function desinscreverUsuario() {
+    swRegistration.pushManager.getSubscription()
+	.then(function (inscricao) {
+	    if (inscricao) {
+		return inscricao.unsubscribe();
+	    }
+	})
+	.catch(function (error) {
+	    console.log('Error unsubscribing', error);
+	})
+	.then(function (sub) {
+	    var usrSub = document.getElementById('inscricaoDoUsuario');
+	    if (sub) {
+		usrSub.innerHTML = JSON.stringify(sub);
+	    }else{
+		usrSub.innerHTML = '';
+	    }
+	});
+}
+```
+
+#### MOSTRAR FUNCIONANDO
+
+#### `sw.js`
+```
+self.addEventListener("push", function (event) {
+    console.log('[Service Worker] Push Received.');
+
+    var data = event.data.json();
+    console.log(`[Service Worker] Push had this data:`, data);
+
+    var title = data.title;
+    var options = data.options;
+    const notificationPromise = self.registration.showNotification(title, options);
+    event.waitUntil(notificationPromise);
+});
+```
+
+```
+self.addEventListener('notificationclick', function(event) {
+  console.log('[Service Worker] Notification click Received.');
+
+  event.notification.close();
+
+  event.waitUntil(
+    clients.openWindow('https://developers.google.com/web/')
+  );
+});
+```

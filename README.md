@@ -146,32 +146,35 @@ self.addEventListener('fetch', function(evt) {
 ### `service-worker.js` - Third
 ```
 var CACHE_FILES = [
-    './index.html',
-    './manifest.json',
-    './vendors/mdl/material.min.js',
-    './vendors/mdl/material.min.css',
-    './vendors/mdl/material.icons.css',
-    './vendors/mdl/material.icons.woff2'
+  './index.html',
+  './manifest.json',
+  './vendors/mdl/material.min.js',
+  './vendors/mdl/material.min.css',
+  './vendors/mdl/material.icons.css',
+  './vendors/mdl/material.icons.woff2'
 ];
 var CACHE = 'v1';
 
-self.addEventListener('install', function(event) {
+self.addEventListener('install', function (event) {
   event.waitUntil(
-    caches.open(CACHE).then(function(cache) {
+    caches.open(CACHE).then(function (cache) {
       return cache.addAll(CACHE_FILES);
     })
   );
 });
 
-self.addEventListener('fetch', function(event) {
-  event.respondWith(caches.match(event.request).catch(function() {
-    return fetch(event.request);
-  }).then(function(response) {
-    caches.open(CACHE).then(function(cache) {
-      cache.put(event.request, response);
-    });
-    return response.clone();
-  })
+self.addEventListener('fetch', function (event) {
+  event.respondWith(
+    caches.match(event.request)
+      .catch(function () {
+        return fetch(event.request);
+      })
+      .then(function (response) {
+        caches.open(CACHE).then(function (cache) {
+          cache.put(event.request, response);
+        });
+        return response.clone();
+      })
   );
 });
 ```

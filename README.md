@@ -267,7 +267,7 @@ self.addEventListener('fetch', function (event) {
             searchArtistResult.innerHTML = '';
             var url = 'https://api.musixmatch.com/ws/1.1/track.search?apikey=a2092c783aa8162ca77beab498103c8c&page_size=100&page=1&format=jsonp&callback=callback&q=' + artistInputValue;
             fetch(url)
-                .then(function (response) { response.text(); })
+                .then(function (response) { return response.text(); })
                 .then(function (responseText) {
                     const match = responseText.match(/\((.*)\);/m);
                     if (!match[1]) throw new Error('invalid JSONP response');

@@ -26,8 +26,8 @@ https://pwa.rocks/
     "description": "Music searcher!",
     "icons": [
         {
-            "src": "./icons/android-chrome-512x512.png",
-            "sizes": "512x512",
+            "src": "./icons/android-chrome-256x256.png",
+            "sizes": "256x256",
             "type": "image/png"
         }
     ],
@@ -140,12 +140,23 @@ self.addEventListener('fetch', function(evt) {
 ### `service-worker.js` - Second
 ```
 var CACHE_FILES = [
+  './',
   './index.html',
   './manifest.json',
+  './vendors/pwacompat/pwacompat.min.js',
   './vendors/mdl/material.min.js',
   './vendors/mdl/material.min.css',
   './vendors/mdl/material.icons.css',
-  './vendors/mdl/material.icons.woff2'
+  './vendors/mdl/material.icons.woff2',
+  './icons/android-chrome-192x192.png',
+  './icons/android-chrome-256x256.png',
+  './icons/apple-touch-icon.png',
+  './icons/browserconfig.xml',
+  './icons/favicon-16x16.png',
+  './icons/favicon-32x32.png',
+  './icons/favicon.ico',
+  './icons/mstile-150x150.png',
+  './icons/safari-pinned-tab.svg'
 ];
 var CACHE = 'v1';
 
@@ -162,12 +173,6 @@ self.addEventListener('fetch', function (event) {
     caches.match(event.request)
       .catch(function () {
         return fetch(event.request);
-      })
-      .then(function (response) {
-        caches.open(CACHE).then(function (cache) {
-          cache.put(event.request, response);
-        });
-        return response.clone();
       })
   );
 });

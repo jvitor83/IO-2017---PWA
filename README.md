@@ -199,7 +199,7 @@ self.addEventListener('fetch', function (event) {
 ### `index.html` (dentro do header no final)
 ```
 <div class="toolbar">
-    <form onsubmit="searchArtist();return false">
+    <form id="form">
 	<div class="mdl-grid">
 
 	    <div class="mdl-cell mdl-cell--3-col-phone mdl-cell--1-col-phone">
@@ -246,7 +246,13 @@ self.addEventListener('fetch', function (event) {
 ### `index.html` (dentro do body - no final)
 ```
     <script>
-        function searchArtist() {
+    	var form = document.getElementById("form");
+
+        form.addEventListener("submit", searchArtist, true);
+
+        function searchArtist(event) {
+            event.preventDefault();
+	    
             var artistInputValue = document.getElementById('artist').value;
             if (!artistInputValue) {
                 alert('Artist not informed!');

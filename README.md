@@ -188,6 +188,14 @@ self.addEventListener('fetch', function (event) {
 ### COPIAR FETCHJSONP
 ### COPIAR ES6-PROMISE
 
+### Adicionar no head (apos material)
+
+```
+    <script src="./vendors/es6-promise/es6-promise.js"></script>
+    <script src="./vendors/fetch/fetch.js"></script>
+    <script src="./vendors/fetch-jsonp/fetch-jsonp.js"></script>
+```
+
 ### `index.html` (dentro do header no final)
 ```
 <div class="toolbar">

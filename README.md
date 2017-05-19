@@ -62,6 +62,10 @@ https://pwa.rocks/
 ### https://iconsflow.com/editor
 ### http://realfavicongenerator.net
 
+> Musis
+> #3e4eb8
+> ./icons/
+
 ### COPIAR PWACOMPAT
 
 ### `index.html` - (adicionar no final do head)

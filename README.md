@@ -63,8 +63,11 @@ https://pwa.rocks/
 ### http://realfavicongenerator.net
 
 > Musis
+
 > #3e4eb8
+
 > ./icons/
+
 
 ### COPIAR PWACOMPAT
 

@@ -196,6 +196,14 @@ self.addEventListener('fetch', function (event) {
     <script src="./vendors/fetch-jsonp/fetch-jsonp.js"></script>
 ```
 
+### Adicionar no `service-worker.js`
+
+```
+  './vendors/es6-promise/es6-promise.js',
+  './vendors/fetch/fetch.js',
+  './vendors/fetch-jsonp/fetch-jsonp.js',
+```
+
 ### `index.html` (dentro do header no final)
 ```
 <div class="toolbar">

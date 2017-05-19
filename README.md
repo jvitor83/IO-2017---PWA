@@ -124,26 +124,13 @@ self.addEventListener('install', function(evt) {
 });
 
 self.addEventListener('fetch', function(evt) {
-  console.log('HELLO WORLD from FETCH event in Service-Worker!');
-});
-```
-
-## Exemplo 5 (Service Worker - Sample)
-
-### `service-worker.js` - Second
-```
-self.addEventListener('install', function(evt) {
-  console.log('The service worker is being installed.');
-});
-
-self.addEventListener('fetch', function(evt) {
     evt.respondWith(new Response("YOU SHALL NOT PASS!"));
 });
 ```
 
 ## Exemplo 6 (Service Worker - Sample)
 
-### `service-worker.js` - Third
+### `service-worker.js` - Second
 ```
 var CACHE_FILES = [
   './index.html',

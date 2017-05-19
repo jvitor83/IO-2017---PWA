@@ -185,7 +185,6 @@ self.addEventListener('fetch', function (event) {
 ## Exemplo 5 (My App)
 
 ### COPIAR FETCH
-### COPIAR FETCHJSONP
 ### COPIAR ES6-PROMISE
 
 ### Adicionar no head (apos material)
@@ -193,7 +192,6 @@ self.addEventListener('fetch', function (event) {
 ```
     <script src="./vendors/es6-promise/es6-promise.js"></script>
     <script src="./vendors/fetch/fetch.js"></script>
-    <script src="./vendors/fetch-jsonp/fetch-jsonp.js"></script>
 ```
 
 ### Adicionar no `service-worker.js`
@@ -201,7 +199,6 @@ self.addEventListener('fetch', function (event) {
 ```
   './vendors/es6-promise/es6-promise.js',
   './vendors/fetch/fetch.js',
-  './vendors/fetch-jsonp/fetch-jsonp.js',
 ```
 
 ### `index.html` (dentro do header no final)
@@ -269,14 +266,20 @@ self.addEventListener('fetch', function (event) {
             var searchArtistResult = document.getElementById('searchArtistResult');
             searchArtistResult.innerHTML = '';
             var url = 'https://api.musixmatch.com/ws/1.1/track.search?apikey=a2092c783aa8162ca77beab498103c8c&page_size=100&page=1&format=jsonp&callback=callback&q=' + artistInputValue;
-            fetchJsonp(url).then(function (response) {
-                return response.json();
-            }).then(function (data) {
-                data.message.body.track_list.forEach(function (data) {
-                    var artistCard = generateArtistCard(data.track);
-                    searchArtistResult.insertAdjacentHTML('beforeend', artistCard);
+            fetch(url)
+                .then((response) => response.text())
+                .then((responseText) => {
+                    const match = responseText.match(/\((.*)\);/m);
+                    if (!match[1]) throw new Error('invalid JSONP response');
+                    const json = JSON.parse(match[1]);
+                    return json;
+                })
+                .then(function (data) {
+                    data.message.body.track_list.forEach(function (data) {
+                        var artistCard = generateArtistCard(data.track);
+                        searchArtistResult.insertAdjacentHTML('beforeend', artistCard);
+                    });
                 });
-            });
         }
 
         function generateArtistCard(artist) {
@@ -336,7 +339,7 @@ self.addEventListener('fetch', function (event) {
 
 `sw-precache`
 
-`sw-precache --config=sw-precache-config.js`
+### `sw-precache-config.js`
 
 ```
 module.exports = {
@@ -352,6 +355,9 @@ module.exports = {
   ],
   "runtimeCaching": [{
     "urlPattern": /^https:\/\/api.musixmatch.com\//,
+    "handler": "networkFirst"
+  },{
+    "urlPattern": /^http:\/\/s.mxmcdn.net\//,
     "handler": "networkFirst"
   }]
 }

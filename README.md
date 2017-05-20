@@ -508,10 +508,14 @@ self.addEventListener('notificationclick', function(event) {
 
 ```
 {
-    "title": "Google IO 2017 Extended",
-    "options" : {
-          "body": "Demonstrando Push Notifications",
-          "icon": "https://cdn1.tnwcdn.com/wp-content/blogs.dir/1/files/2017/01/Google-IO.jpg"
-    }
+"title": "Google IO 2017 Extended",
+"options": {
+  "body": "O que você está achando do Google IO 2017 Extended?",
+  "icon": "https://cdn1.tnwcdn.com/wp-content/blogs.dir/1/files/2017/01/Google-IO.jpg",
+  "actions": [
+    { "action": "yes", "title": "Ótimo", "icon": "https://image.spreadshirtmedia.com/image-server/v1/compositions/1006808757/views/1,width=300,height=300,appearanceId=1,backgroundColor=E8E8E8,version=1485256808/heart-emoticon-men-s-t-shirt.jpg" },
+    { "action": "no", "title": "Muito Bom", "icon": "http://pix.iemoji.com/images/emoji/apple/ios-9/256/thumbs-up-sign.png" }
+  ]
+}
 }
 ```

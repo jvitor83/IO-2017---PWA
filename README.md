@@ -505,3 +505,13 @@ self.addEventListener('notificationclick', function(event) {
 ```
 
 #### MOSTRAR FUNCIONANDO
+
+```
+{
+    "title": "titulo",
+    "options" : {
+          "body": "Buzz! Buzz!",
+          "icon": "./icon.png"
+    }
+}
+```

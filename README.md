@@ -511,7 +511,7 @@ self.addEventListener('notificationclick', function(event) {
     "title": "Google IO 2017 Extended",
     "options" : {
           "body": "Demonstrando Push Notifications",
-          "icon": "./icon.png"
+          "icon": "https://cdn1.tnwcdn.com/wp-content/blogs.dir/1/files/2017/01/Google-IO.jpg"
     }
 }
 ```

@@ -508,9 +508,9 @@ self.addEventListener('notificationclick', function(event) {
 
 ```
 {
-    "title": "titulo",
+    "title": "Google IO 2017 Extended",
     "options" : {
-          "body": "Buzz! Buzz!",
+          "body": "Demonstrando Push Notifications",
           "icon": "./icon.png"
     }
 }
